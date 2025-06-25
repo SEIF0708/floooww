@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow AI - Supercharge Your E-commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.6);
+        }
+
+        .consultation-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .consultation-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .consultation-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #34495e;
+        }
+
+        .call-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #27ae60, #00b894);
+            color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
+            margin: 10px;
+        }
+
+        .call-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 184, 148, 0.6);
+        }
+
+        .phone-mockup {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            border-radius: 30px;
+            padding: 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #f39c12;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .chat-message {
+            background: #007AFF;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 18px;
+            margin-bottom: 8px;
+            max-width: 80%;
+            font-size: 14px;
+            animation: slideInMessage 0.5s ease-out;
+        }
+
+        .chat-message.incoming {
+            background: #E5E5EA;
+            color: #000;
+            margin-left: auto;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #E5E5EA;
+            border-radius: 18px;
+            max-width: 60px;
+            margin-bottom: 8px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .conversion-badge {
+            position: absolute;
+            top: 50px;
+            left: -50px;
+            background: rgba(255, 255, 255, 0.95) padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .conversion-badge .metric {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #333;
+            font-style: normal;
+        }
+
+        /* Toggle Switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            background-color: #ccc;
+            border-radius: 34px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0.4s;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        input:checked+.slider {
+            background-color: #667eea;
+        }
+
+        input:checked+.slider::before {
+            transform: translateX(26px);
+        }
+
+        /* Active Plan Effect */
+        .pricing-card.active {
+            border-color: #00e0b4;
+            box-shadow: 0 0 20px rgba(0, 224, 180, 0.4);
+        }
+
+        /* Featured stays distinct */
+        .pricing-card.featured.active {
+            border-color: #ffcc00;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .how-it-works-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .step-card {
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes slideInMessage {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table .ai-column {
+            background: linear-gradient(135deg, #d4e157, #689f38);
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table .human-column {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 400px;
+                position: relative;
+                margin: 2rem auto;
+            }
+
+            .conversion-badge {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 1rem auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .consultation-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .consultation-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .consultation-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #34495e;
+        }
+
+        .call-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #27ae60, #00b894);
+            color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
+            margin: 10px;
+        }
+
+        .call-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 184, 148, 0.6);
+        }
+
+        .pricing-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f0f4ff, #d9e2ff);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .toggle-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .toggle-label {
+            font-size: 1.1rem;
+            user-select: none;
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 30px;
+            transition: 0.4s;
+        }
+
+        .slider::before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked+.slider {
+            background-color: #667eea;
+        }
+
+        input:checked+.slider::before {
+            transform: translateX(24px);
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: white;
+            padding: 2.5rem 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgb(102 126 234 / 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 25px 50px rgb(102 126 234 / 0.3);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured {
+            border-color: #ffbf00;
+            box-shadow: 0 25px 50px rgba(255, 191, 0, 0.4);
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffbf00;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 15px rgba(255, 191, 0, 0.4);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 2rem;
+        }
+
+        .currency {
+            font-size: 1.1rem;
+            font-weight: 600;
+            vertical-align: top;
+            margin-right: 3px;
+            color: #444;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #555;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .plan-features li::before {
+            content: "✔️";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+            color: #667eea;
+        }
+
+        /* Button */
+        .plan-button {
+            background: #667eea;
+            color: white;
+            font-weight: 700;
+            padding: 14px 0;
+            border-radius: 50px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1.1rem;
+            letter-spacing: 0.03em;
+            user-select: none;
+            display: block;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .plan-button:hover {
+            background: #556cd6;
+            box-shadow: 0 15px 40px rgba(85, 108, 214, 0.6);
+        }
+
+        /* Active Card Style */
+        .pricing-card.active {
+            border-color: #00e0b4;
+            box-shadow: 0 0 20px rgba(0, 224, 180, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .pricing-title {
+                font-size: 2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toggle-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Business with AI Automation</h1>
+            <p>Revolutionize customer service, boost conversions, and reduce costs with our intelligent AI agents</p>
+            <a href="#consultation" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+
+    <!-- Free Consultation Section -->
+    <section id="consultation" class="section consultation-section">
+        <div class="container">
+            <h2>🚀 Free Strategy Consultation</h2>
+            <p>Ready to transform your business? Get a personalized consultation and discover how AI automation can
+                revolutionize your operations.</p>
+            <p><strong>📞 Call us directly and speak with our AI automation experts!</strong></p>
+            <a href="tel:+21629710282" class="call-button">📞 Call Now: +216 29 710 282</a>
+            <p style="margin-top: 20px; font-size: 1.1rem; color: #34495e;">
+                ⏰ Available 24/7 | 💬 Immediate Response | 🎯 Tailored Solutions
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="stats-title">Your Time is Money — Let AutoFlow Save Both</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Hours saved per week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number">TND <span data-target="650">0</span>+</div>
+                    <div class="stat-label">Saved monthly on staff costs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">+<span data-target="22">0</span>%</div>
+                    <div class="stat-label">Conversion rate increase</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🤖</div>
+                    <div class="stat-number"><span data-target="95">0</span>%</div>
+                    <div class="stat-label">Response rate with AI chatbot</div>
+                </div>
+            </div>
+            <div class="testimonial">
+                Before AutoFlow AI, we lost customers at checkout. Now, we recover 3 out of 5 abandoned carts.
+                <div class="testimonial-author">– Yassine, Founder of StyleKart.tn</div>
+            </div>
+        </div>
+    </section>
+    <!-- Comparison Section -->
+    <section class="section">
+        <div class="container">
+            <h2>🔥 AI Automation vs Traditional Customer Service</h2>
+            <p class="section-subtitle">See why smart businesses are making the switch</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th class="ai-column">🤖 AI Automation Service</th>
+                        <th class="human-column">👥 Human Customer Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Monthly Cost</strong></td>
+                        <td class="ai-column">99-1000TND/month</td>
+                        <td class="human-column">600-2,000TND/month per agent</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Availability</strong></td>
+                        <td class="ai-column">24/7/365 - Never sleeps</td>
+                        <td class="human-column">Limited hours, breaks, sick days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Response Time</strong></td>
+                        <td class="ai-column">Instant (< 5 seconds)</td>
+                        <td class="human-column">2-15 minutes average</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SMS Marketing</strong></td>
+                        <td class="ai-column">Advanced AI-powered campaigns, 85% open rates</td>
+                        <td class="human-column">Basic/manual, 20-35% open rates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conversion Rate</strong></td>
+                        <td class="ai-column">35-65% conversion rate</td>
+                        <td class="human-column">8-15% conversion rate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consistency</strong></td>
+                        <td class="ai-column">Perfect every time</td>
+                        <td class="human-column">Varies by mood, training, experience</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td class="ai-column">Handle 1000s simultaneously</td>
+                        <td class="human-column">One conversation at a time</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Language Support</strong></td>
+                        <td class="ai-column">50+ languages instantly</td>
+                        <td class="human-column">Limited to agent's languages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Training Time</strong></td>
+                        <td class="ai-column">Instant updates</td>
+                        <td class="human-column">Weeks/months of training</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Analytics</strong></td>
+                        <td class="ai-column">Real-time insights & optimization</td>
+                        <td class="human-column">Manual reporting, limited insights</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-container">
+            <h2 class="pricing-title">Simple Plans That Scale With Your Growth</h2>
+
+            <!-- Pricing Toggle -->
+            <div class="toggle-container">
+                <span class="toggle-label">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggleBilling" />
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Yearly <small>(Save 20%)</small></span>
+            </div>
+
+            <div class="pricing-grid" id="pricingCards">
+                <!-- Pricing cards injected by JavaScript -->
+            </div>
+
+            <p class="pricing-note">
+                💡 Not sure? Start with Free and upgrade anytime!
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Client Reviews Section -->
+    <section class="section">
+        <div class="container">
+            <h2>⭐ What Our Clients Say</h2>
+            <p class="section-subtitle">Join hundreds of satisfied businesses that transformed their operations with our
+                AI solutions</p>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"Incredible results! Our conversion rate increased by 340% in just 2 months. The AI agent
+                            handles customer inquiries better than our previous human team."</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Sarah M., E-commerce Director</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"We cut our customer service costs by 75% while improving response times to under 30
+                            seconds. Absolutely game-changing!"</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Ahmed K., Restaurant Chain Owner</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"The SMS marketing integration is phenomenal. We're seeing 85% open rates and 45%
+                            click-through rates. Our ROI tripled!"</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Maria L., Marketing Manager</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"24/7 availability changed everything. We're capturing leads while we sleep. Revenue
+                            increased by 180% in 6 months."</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Hassan T., Real Estate Agency</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"The personalization is incredible. Each customer feels like they're getting VIP
+                            treatment. Customer satisfaction scores went from 6.2 to 9.4!"</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Fatma R., Boutique Owner</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p><strong>"Setup was seamless, results were immediate. Best business investment we've ever made.
+                            Wish we had done this sooner!"</strong></p>
+                    <p style="margin-top: 15px; color: #7f8c8d;">- Omar B., Tech Startup Founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="how-it-works-container">
+            <h2 class="how-it-works-title">Set Up in Minutes – Not Days</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🔌</div>
+                    <div class="step-title">Connect Your Store</div>
+                    <div class="step-description">Easy integration with Shopify, WooCommerce, or any custom platform
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">✍️</div>
+                    <div class="step-title">Create SMS Flows</div>
+                    <div class="step-description">Choose from templates or create custom automated messaging sequences
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🤖</div>
+                    <div class="step-title">Enable Chatbot</div>
+                    <div class="step-description">Deploy AI chatbot on your website or social media channels</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">📊</div>
+                    <div class="step-title">Track Performance</div>
+                    <div class="step-description">Monitor real-time analytics and optimize your campaigns</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section consultation-section">
+        <div class="container">
+            <h2>🚀 Ready to Transform Your Business?</h2>
+            <p>Don't let another day pass with inefficient customer service. Join the AI revolution today!</p>
+            <a href="tel:+21629710282" class="call-button">📞 Call Now: +216 29 710 282</a>
+            <p style="margin-top: 30px; font-size: 1.1rem; color: #34495e;">
+                ✅ Free consultation | ✅ Custom strategy | ✅ 30-day guarantee | ✅ Setup in 48 hours
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">AutoFlow AI</div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+                <a href="#terms">Terms</a>
+                <a href="#privacy">Privacy</a>
+            </div>
+            <div class="footer-copyright">
+                Made in 🇹🇳 with ❤️ by AutoFlow AI
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pricingData = {
+                monthly: [
+                    { name: 'Free', price: 0, features: ['10 SMS per month', 'Basic analytics', 'Email support', 'Perfect for demo'], plan: 'freetrial' },
+                    { name: 'Basic', price: 39, features: ['1,000 SMS/month', 'Basic personalization', 'Standard support', 'Good for small stores'], plan: 'basic' },
+                    { name: 'Standard', price: 119, features: ['4,000 SMS/month', '✔️ Chatbot included', 'Custom automation', 'Advanced analytics', 'Priority support'], plan: 'standard', featured: true },
+                    { name: 'Pro', price: 249, features: ['10,000 SMS/month', '✔️ Full chatbot features', 'Full customization', 'Premium analytics', '24/7 support', 'API access'], plan: 'pro' }
+                ],
+                yearly: [
+                    { name: 'Free', price: 0, features: ['10 SMS per month', 'Basic analytics', 'Email support', 'Perfect for demo'], plan: 'freetrial' },
+                    { name: 'Basic', price: 390, features: ['12,000 SMS/year', 'Basic personalization', 'Standard support', 'Good for small stores'], plan: 'basic' },
+                    { name: 'Standard', price: 1190, features: ['48,000 SMS/year', '✔️ Chatbot included', 'Custom automation', 'Advanced analytics', 'Priority support'], plan: 'standard', featured: true },
+                    { name: 'Pro', price: 2490, features: ['120,000 SMS/year', '✔️ Full chatbot features', 'Full customization', 'Premium analytics', '24/7 support', 'API access'], plan: 'pro' }
+                ]
+            };
+
+            function renderPricing(mode = 'monthly') {
+                const container = document.getElementById('pricingCards');
+                container.innerHTML = '';
+                pricingData[mode].forEach(plan => {
+                    const card = document.createElement('div');
+                    card.className = 'pricing-card' + (plan.featured ? ' featured' : '');
+                    card.innerHTML = `
+        ${plan.featured ? '<div class="badge">✨ MOST POPULAR</div>' : ''}
+        <div class="plan-name">${plan.name}</div>
+        <div class="plan-price"><span class="currency">TND</span> ${plan.price}</div>
+        <ul class="plan-features">
+          ${plan.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <a href="signup.html?plan=${plan.plan}" class="plan-button">Choose ${plan.name}</a>
+      `;
+                    card.onclick = () => {
+                        document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    };
+                    container.appendChild(card);
+                });
+
+                // Add hover animation (must re-bind after rendering)
+                document.querySelectorAll('.pricing-card').forEach(card => {
+                    card.addEventListener('mouseenter', function () {
+                        this.style.transform = 'translateY(-10px) scale(1.02)';
+                    });
+                    card.addEventListener('mouseleave', function () {
+                        this.style.transform = this.classList.contains('featured') ? 'translateY(0) scale(1.05)' : 'translateY(0) scale(1)';
+                    });
+                });
+            }
+
+            // Handle billing toggle
+            const toggle = document.getElementById('toggleBilling');
+            if (toggle) {
+                toggle.addEventListener('change', (e) => {
+                    renderPricing(e.target.checked ? 'yearly' : 'monthly');
+                });
+            }
+
+            renderPricing(); // Initial render
+
+            // Stats counter animation
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    element.textContent = Math.floor(current);
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 20);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('[data-target]');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            animateCounter(counter, target);
+                        });
+                    }
+                });
+            });
+
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) observer.observe(statsSection);
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Simulated Chat
+            function simulateChat() {
+                const chatContainer = document.getElementById('chat-container');
+                if (!chatContainer) return;
+
+                const messages = [
+                    { text: "Hi! Your cart is waiting for you 🛒", incoming: false },
+                    { text: "Is my order still available?", incoming: true },
+                    { text: "Yes! Plus get 10% off if you complete it now", incoming: false },
+                    { text: "Perfect! Processing order now ✅", incoming: true }
+                ];
+
+                let currentMessage = 0;
+                setInterval(() => {
+                    if (currentMessage < messages.length) {
+                        chatContainer.innerHTML = '';
+                        for (let i = 0; i <= currentMessage; i++) {
+                            const messageDiv = document.createElement('div');
+                            messageDiv.className = `chat-message ${messages[i].incoming ? 'incoming' : ''}`;
+                            messageDiv.textContent = messages[i].text;
+                            chatContainer.appendChild(messageDiv);
+                        }
+
+                        if (currentMessage < messages.length - 1) {
+                            const typingDiv = document.createElement('div');
+                            typingDiv.className = 'typing-indicator';
+                            typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+                            chatContainer.appendChild(typingDiv);
+                        }
+
+                        currentMessage++;
+                    } else {
+                        currentMessage = 0;
+                    }
+                }, 3000);
+            }
+
+            simulateChat();
+        });
+    </script>
+
+</body>
+
+</html>

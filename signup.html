@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AutoFlow AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+            z-index: 10;
+        }
+
+        .signup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00C2FF 0%, #D6336C 100%);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00C2FF 0%, #D6336C 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2D3748;
+        }
+
+        .tagline {
+            color: #718096;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2D3748;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4A5568;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: #FAFAFA;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #00C2FF;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder {
+            color: #A0AEC0;
+        }
+
+        .password-requirements {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 6px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-input[type="password"]:focus + .password-requirements,
+        .form-input[type="password"]:not(:placeholder-shown) + .password-requirements {
+            opacity: 1;
+        }
+
+        .error-message {
+            color: #E53E3E;
+            font-size: 12px;
+            margin-top: 6px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #00C2FF 0%, #D6336C 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 194, 255, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 194, 255, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #00C2FF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #D6336C;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 60px;
+            height: 60px;
+            background: #00C2FF;
+            top: 20%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .circle-2 {
+            width: 40px;
+            height: 40px;
+            background: #D6336C;
+            bottom: 30%;
+            left: 5%;
+            animation-delay: -4s;
+        }
+
+        .circle-3 {
+            width: 80px;
+            height: 80px;
+            background: #FCE4EC;
+            top: 60%;
+            right: 20%;
+            animation-delay: -1s;
+        }
+
+        /* Background animated elements */
+        .bg-animations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            animation: floatAround 20s linear infinite;
+        }
+
+        .bg-shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+
+        .bg-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            right: 15%;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .bg-shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-duration: 22s;
+            animation-delay: -10s;
+        }
+
+        .bg-shape:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 30%;
+            right: 25%;
+            animation-duration: 28s;
+            animation-delay: -15s;
+        }
+
+        .bg-shape:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            left: 5%;
+            animation-duration: 20s;
+            animation-delay: -8s;
+        }
+
+        .bg-shape:nth-child(6) {
+            width: 90px;
+            height: 90px;
+            top: 70%;
+            right: 10%;
+            animation-duration: 26s;
+            animation-delay: -12s;
+        }
+
+        .bg-triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 50px solid rgba(255, 255, 255, 0.08);
+            animation: triangleFloat 18s ease-in-out infinite;
+        }
+
+        .bg-triangle:nth-child(7) {
+            top: 15%;
+            left: 30%;
+            animation-delay: -3s;
+        }
+
+        .bg-triangle:nth-child(8) {
+            bottom: 25%;
+            right: 30%;
+            animation-delay: -7s;
+            transform: rotate(180deg);
+        }
+
+        .bg-square {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(0, 194, 255, 0.1), rgba(214, 51, 108, 0.1));
+            border-radius: 12px;
+            animation: squareRotate 24s linear infinite;
+        }
+
+        .bg-square:nth-child(9) {
+            width: 40px;
+            height: 40px;
+            top: 25%;
+            left: 70%;
+            animation-delay: -6s;
+        }
+
+        .bg-square:nth-child(10) {
+            width: 60px;
+            height: 60px;
+            bottom: 40%;
+            left: 40%;
+            animation-delay: -14s;
+        }
+
+        .bg-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: lineMove 16s linear infinite;
+        }
+
+        .bg-line:nth-child(11) {
+            width: 200px;
+            top: 30%;
+            left: -200px;
+            animation-delay: -2s;
+        }
+
+        .bg-line:nth-child(12) {
+            width: 150px;
+            bottom: 35%;
+            right: -150px;
+            animation-delay: -9s;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, -60px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-40px, -20px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        @keyframes triangleFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.08;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes squareRotate {
+            0% {
+                transform: rotate(0deg) scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+                opacity: 0.2;
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes lineMove {
+            0% {
+                transform: translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(180deg);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+
+            .signup-container {
+                padding: 24px;
+                margin: 10px;
+                border-radius: 20px;
+                min-height: auto;
+            }
+
+            .logo-text {
+                font-size: 24px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+
+            .form-input {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                padding: 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Success animation */
+        @keyframes bounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .bounce {
+            animation: bounce 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background animated elements -->
+    <div class="bg-animations">
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+        <div class="bg-triangle"></div>
+        <div class="bg-triangle"></div>
+        <div class="bg-square"></div>
+        <div class="bg-square"></div>
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+    </div>
+
+    <div class="signup-container">
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+        </div>
+
+        <div class="logo-section">
+            <div class="logo">
+                <div class="logo-icon">AF</div>
+                <div class="logo-text">AutoFlow AI</div>
+            </div>
+            <p class="tagline">Start automating your growth today</p>
+        </div>
+
+        <h2 class="form-title">Create Your Account</h2>
+
+        <form id="signupForm">
+            <div class="form-group">
+                <label class="form-label" for="fullName">Full Name</label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    class="form-input" 
+                    placeholder="John Doe"
+                    required
+                >
+                <div class="error-message" id="nameError">Please enter your full name</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="john@example.com"
+                    required
+                >
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="Enter your password"
+                    required
+                    minlength="6"
+                >
+                <div class="password-requirements">Minimum 6 characters required</div>
+                <div class="error-message" id="passwordError">Password must be at least 6 characters long</div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Create Account
+            </button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="login.html">Log in here</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const inputs = form.querySelectorAll('.form-input');
+
+        // Add floating label effect and validation
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearError);
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const fieldName = field.name;
+            const value = field.value.trim();
+            let isValid = true;
+
+            // Clear previous errors
+            clearError(e);
+
+            // Validate based on field type
+            switch(fieldName) {
+                case 'fullName':
+                    if (value.length < 2) {
+                        showError('nameError', 'Please enter your full name');
+                        isValid = false;
+                    }
+                    break;
+
+                case 'email':
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        showError('emailError', 'Please enter a valid email address');
+                        isValid = false;
+                    }
+                    break;
+
+                case 'password':
+                    if (value.length < 6) {
+                        showError('passwordError', 'Password must be at least 6 characters long');
+                        isValid = false;
+                    }
+                    break;
+            }
+
+            return isValid;
+        }
+
+        function showError(errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
+
+        function clearError(e) {
+            const field = e.target;
+            const fieldName = field.name;
+            const errorElement = document.getElementById(fieldName + 'Error');
+            if (errorElement) {
+                errorElement.classList.remove('show');
+            }
+        }
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isFormValid = true;
+            
+            // Validate all fields
+            inputs.forEach(input => {
+                const fieldValid = validateField({ target: input });
+                if (!fieldValid) isFormValid = false;
+            });
+
+            if (isFormValid) {
+                // Simulate account creation
+                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Account Created! ✨';
+                    submitBtn.style.background = 'linear-gradient(135deg, #48BB78 0%, #38A169 100%)';
+                    
+                    // Add bounce animation
+                    form.parentElement.classList.add('bounce');
+                    
+                    setTimeout(() => {
+                        alert('Welcome to AutoFlow AI! Your account has been created successfully.');
+                        // In a real app, redirect to dashboard or login
+                    }, 1000);
+                }, 2000);
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelector('.logo-icon').addEventListener('mouseenter', function() {
+            this.style.transform = 'rotate(360deg) scale(1.1)';
+            this.style.transition = 'transform 0.5s ease';
+        });
+
+        document.querySelector('.logo-icon').addEventListener('mouseleave', function() {
+            this.style.transform = 'rotate(0deg) scale(1)';
+        });
+    </script>
+</body>
+</html>
